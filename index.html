@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>Geolocation</title>
+		<meta name="description" content="AJAX/PHP/CURL/JSON example">
+		<meta name="author" content="Paddy Evans">
+
+	</head>
+
+	<body>
+
+		<button id="btnRun">Run</button>
+
+        <table>
+            <tr>
+              <th>API Name</th>
+              <th>API Description</th>
+              <th>User Options</th>
+            </tr>
+            <tr>
+              <td>Neighbours</td>
+              <td>Yields neighbours of countries user enters<br>User input: <br>Country Name</td>
+              <td>
+                <select id="selCountryNeighbours">
+                    <option value="GB">Great Britain</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="US">USA</option>
+                </select>
+                <button id="neighbours-submit">Submit</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Weather</td>
+              <td>Show list of weather stations and their weather observations within coordinates input. List of user inputs<br>
+                <ol>
+                  <li>North: Minumum value of 0 and maximum value of 90</li>
+                  <li>South: Minimum value of -90 and maximum value of 0</li>
+                  <li>East: Minimum value of -180 and maximum value of 180</li>
+                  <li>West: Minimum value of -180 and maximum value of 180</li>
+                  <li>Max Rows</li>
+                </ol>
+              </td>
+              <td>
+                <form>
+                  <label for="north-weather">North</label>
+                  <input id="north-weather" type="number" min="0" max="90" />
+                  
+                  <label for="south-weather">South</label>
+                  <input id="south-weather" type="number" min="-90" max="0" />
+                  
+                  <label for="west-weather">West</label>
+                  <input id="west-weather" type="number" min="-180" max="180" />
+                  
+                  <label for="east-weather">East</label>
+                  <input id="east-weather" type="number" min="-180" max="180" />                  
+                  
+                  <button id="weather-submit" type="submit">Submit</button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+                <td>Timezone</td>
+                <td>Shows timezone ID, GMT offset, sunrise and sunset for user input longitude and lattitude
+                  <ol>
+                    <li>Longitude: Between -90 and 90 (positive values for northern hemisphere and negative values for southern hemisphere)</li>
+                    <li>Lattitude: Between -180 and 180 with 0 being the prime meridian (Greenwich, England), positive values being east of prime meridian and negative values west of prime meridian</li>                    
+                  </ol>
+                </td>
+                <td>
+                  <label for="longitude-timezone">Longitude</label>
+                  <input id="longitude-timezone" type="number" min="-90" max="90" />
+                  
+                  <label for="lattitude-timezone">Lattitude</label>
+                  <input id="lattitude-timezone" type="number" min="-180" max="180" />
+                </td>
+              </tr>            
+          </table>        
+          
+          <div class="output-container" id="country-neighbours-output">
+
+            <span id="neighbour-list"></span>
+          </div>
+
+          <div class="output-container" id="weather-output"></div>
+
+          <div class="output-container" id="timezone-out"></div>
+
+		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+		<script type="application/javascript" src="libs/js/script.js"></script>
+
+	</body>
+
+</html>
