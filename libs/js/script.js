@@ -1,5 +1,5 @@
 // ENDPOINT FOR NEIGHTBOURS INFORMATion
-$('neighbours-submit').on('click' ,function() {
+$('#neighbours-submit').on('click' ,function() {
     $.ajax({
         url: 'libs/php/geo_neighbours.php',
         type: "POST",
@@ -8,10 +8,13 @@ $('neighbours-submit').on('click' ,function() {
             country: $('#selCountryNeighbours').val()
         },
         success: function(response) {
+            console.log(JSON.stringify(response));
             $neighboursLs = $("#neighbours-list");
+            $neighboursLs.html('');
             $responseItem = response['data'];
             $.each($responseItem, function(idx, item) {
-                $neighboursLs.append($responseItem['countryName']);
+                const listItem = $("<li>").text(item['countryName']);
+                $neighboursLs.append(listItem);
             })            
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -22,7 +25,7 @@ $('neighbours-submit').on('click' ,function() {
 
 
 // ENDPOINT FOR TIMEZONE INFORMATION 
-$('timezone-submit').on('click', function(e) {
+$('#timezone-submit').on('click', function(e) {
     e.preventDefault();
     $.ajax({
         url: 'libs/php/geo_timezone.php',
@@ -30,21 +33,27 @@ $('timezone-submit').on('click', function(e) {
         dataType: "json",
         data: 'json',
         data: {
+            // Example of valid logitude and lattitude values
+            // lattitude: 47 longitude: 10
+            // lattitude: 20 longitude: 10
+            // lattitude: 20 longitude: 60
+            // lattitude: 20 longitude: 40
             longitude: $('#longitude-timezone').val(),
             lattitude: $('#lattitude-timezone').val()
         },
         success: function(response) {
+            console.log(JSON.stringify(response['data']));
             $("#country-tz").html(response['data']["countryName"]);
             $("#tz-id").html(response['data']["timezoneId"]);
-            $("sunrise").html(response['data']['sunrise']);
-            $("sunset").html(response['data']['sunset']);
+            $("#sunrise").html(response['data']['sunrise']);
+            $("#sunset").html(response['data']['sunset']);
         }
     })
 })
 
 
 // ENDPOINT FOR WEATHER INFORMATION 
-$('weather-submit').on('click', function(e) {
+$('#weather-submit').on('click', function(e) {
     e.preventDefault();
     $.ajax({
         url: 'libs/php/geo_weather.php',
@@ -54,14 +63,16 @@ $('weather-submit').on('click', function(e) {
         data: {
             north: $('#north-weather').val(),
             south: $('#south-weather').val(),
-            east: $("east-weather").val(),
-            west: $("west-weather").val()
+            east: $("#east-weather").val(),
+            west: $("#west-weather").val()
         },
         success: function(response) {
-            $stationHolder = $("#weather-output");
+            console.log(JSON.stringify(response['data']));
+            $stationHolder = $("#weather-list");
+            $stationHolder.html('');
             const responseData = response['data'];
             $.each(responseData, function(idx, item) {
-                const listItem = $('<li>').text(item['stationNames']);
+                const listItem = $('<li>').text(item['stationName']);
 
                 $stationHolder.append(listItem)
             })

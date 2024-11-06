@@ -1,15 +1,9 @@
 <!doctype html>
-
 <html lang="en">
-
 	<head>
-
 		<meta charset="utf-8">
-
 		<title>Geolocation</title>
 		<meta name="description" content="AJAX/PHP/CURL/JSON example">
-		<meta name="author" content="Paddy Evans">
-
 	</head>
 
 	<body>
@@ -41,28 +35,28 @@
             </tr>
             <tr>
               <td>Weather</td>
-              <td>Show list of weather stations and their weather observations within coordinates input. List of user inputs<br>
+              <td>List of nearest 10 weather stations<br> List of user inputs<br>
                 <ol>
                   <li>North: Minumum value of 0 and maximum value of 90</li>
                   <li>South: Minimum value of -90 and maximum value of 0</li>
-                  <li>East: Minimum value of -180 and maximum value of 180</li>
-                  <li>West: Minimum value of -180 and maximum value of 180</li>
-                  <li>Max Rows</li>
+                  <li>East: Minimum value of -180 and maximum value of 0</li>
+                  <li>West: Minimum value of 0 and maximum value of 180</li>                  
                 </ol>
+                <span>Please note the difference between (i) north & south (ii) east & west should be as wide as possible to guarantee existence of stations </span>
               </td>
               <td>
                 <form>
                   <label for="north-weather">North</label>
-                  <input id="north-weather" type="number" min="0" max="90" />
+                  <input id="north-weather" type="number" min="0" max="90" /><br>
                   
                   <label for="south-weather">South</label>
-                  <input id="south-weather" type="number" min="-90" max="0" />
+                  <input id="south-weather" type="number" min="-90" max="0" /><br>
                   
                   <label for="west-weather">West</label>
-                  <input id="west-weather" type="number" min="-180" max="180" />
+                  <input id="west-weather" type="number" min="-180" max="0" /><br>
                   
                   <label for="east-weather">East</label>
-                  <input id="east-weather" type="number" min="-180" max="180" />                  
+                  <input id="east-weather" type="number" min="0" max="180" /><br>               
                   
                   <button id="weather-submit" type="submit">Submit</button>
                 </form>
@@ -75,14 +69,15 @@
                     <li>Longitude: Between -90 and 90 (positive values for northern hemisphere and negative values for southern hemisphere)</li>
                     <li>Lattitude: Between -180 and 180 with 0 being the prime meridian (Greenwich, England), positive values being east of prime meridian and negative values west of prime meridian</li>                    
                   </ol>
+                  <span>Coordinates must correspond to a valid location. Example coordiantes provided in script.js file</span>
                 </td>
                 <td>
                   <form id="timezone-input">
                     <label for="longitude-timezone">Longitude</label>
-                    <input id="longitude-timezone" type="number" min="-90" max="90" />
+                    <input id="longitude-timezone" type="number" min="-90" max="90" /><br>
                     
                     <label for="lattitude-timezone">Lattitude</label>
-                    <input id="lattitude-timezone" type="number" min="-180" max="180" />
+                    <input id="lattitude-timezone" type="number" min="-180" max="180" /><br>
 
                     <button id="timezone-submit">Submit</button>
                   </form>
@@ -101,29 +96,29 @@
           </div>
 
           <div class="output-container" id="timezone-out">
-            <h3>TImezone Information</h3>
+            <h3>Timezone Information</h3>
             <table>
               <tr>
                 <th scope="row">Country Name</th>
-                <th id="country-tz"></th>
+                <td id="country-tz"></td>
               </tr>
               <tr>
                 <th scope="row">Timezone ID</th>
-                <tr id="tz-id"></tr>
+                <td id="tz-id"></td>
               </tr>
               <tr>
                 <th scope="row">Sunrise</th>
                 <td id="sunrise"></td>                                
               </tr>
               <tr>
-                <th id="sunset">Sunset</th>
+                <th scope="row">Sunset</th>
+                <td id="sunset"></td>
               </tr>
             </table>
           </div>
 
-		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
-		<script type="application/javascript" src="libs/js/script.js"></script>
-
+		<script type="application/javascript" src="libs/js/jquery-3.6.0.min.js"></script>
+		<script type="application/javascript" src="libs/js/script.js"></script>    
 	</body>
 
 </html>

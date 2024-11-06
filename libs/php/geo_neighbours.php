@@ -1,9 +1,9 @@
 <?php
 
-$file_content = file_get_contents('../../api_info.txt');
+$file_content = trim(file_get_contents('../../text_files/api_info.txt'));
 
 $url = "http://api.geonames.org/neighboursJSON?country=" . $_REQUEST['country'] . "&username=".$file_content;
-
+// echo $file_content;
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
