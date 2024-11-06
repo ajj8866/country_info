@@ -31,6 +31,10 @@
                     <option value="FR">France</option>
                     <option value="DE">Germany</option>
                     <option value="US">USA</option>
+                    <option value="BR">Brazil</option>
+                    <option value="BE">Belgium</option>
+                    <option value="JO">Jordan</option>
+                    <option value="KGZ">Kyrgystan</option>                    
                 </select>
                 <button id="neighbours-submit">Submit</button>
               </td>
@@ -73,23 +77,49 @@
                   </ol>
                 </td>
                 <td>
-                  <label for="longitude-timezone">Longitude</label>
-                  <input id="longitude-timezone" type="number" min="-90" max="90" />
-                  
-                  <label for="lattitude-timezone">Lattitude</label>
-                  <input id="lattitude-timezone" type="number" min="-180" max="180" />
+                  <form id="timezone-input">
+                    <label for="longitude-timezone">Longitude</label>
+                    <input id="longitude-timezone" type="number" min="-90" max="90" />
+                    
+                    <label for="lattitude-timezone">Lattitude</label>
+                    <input id="lattitude-timezone" type="number" min="-180" max="180" />
+
+                    <button id="timezone-submit">Submit</button>
+                  </form>
                 </td>
               </tr>            
           </table>        
           
           <div class="output-container" id="country-neighbours-output">
-
-            <span id="neighbour-list"></span>
+            <h3>Neighbours for Countery</h3>
+            <ul id="neighbours-list"></ul>
           </div>
 
-          <div class="output-container" id="weather-output"></div>
+          <div class="output-container" id="weather-output">
+            <h3>Weather Information for Nearest Station</h3>
+            <ul id="weather-list"></ul>
+          </div>
 
-          <div class="output-container" id="timezone-out"></div>
+          <div class="output-container" id="timezone-out">
+            <h3>TImezone Information</h3>
+            <table>
+              <tr>
+                <th scope="row">Country Name</th>
+                <th id="country-tz"></th>
+              </tr>
+              <tr>
+                <th scope="row">Timezone ID</th>
+                <tr id="tz-id"></tr>
+              </tr>
+              <tr>
+                <th scope="row">Sunrise</th>
+                <td id="sunrise"></td>                                
+              </tr>
+              <tr>
+                <th id="sunset">Sunset</th>
+              </tr>
+            </table>
+          </div>
 
 		<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
 		<script type="application/javascript" src="libs/js/script.js"></script>
